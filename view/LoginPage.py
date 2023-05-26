@@ -1,21 +1,26 @@
 import flet as ft
+from controller.loginControler import login
+from view.AppPage import AppPage
+from pocketbase.utils import ClientResponseError
 
-def login_page(page: ft.Page, view: ft.View) -> ft.View:
 
-    #login_page settings
-    view.padding = 0
-    view.bgcolor = "#1A1C2D"
-
-    #reference to our control username and password field
+class LoginPage (AppPage):
     username = ft.Ref[ft.TextField]()
     password = ft.Ref[ft.TextField]()
 
-    def printt(_):
-        print("hi")
+    def __init__(self, root, route):
+        super().__init__(root=root, route=route)
+        self.page.padding = 0
+        self.page.bgcolor = "#1A1C2D"
+        self.page.did_mount = self.did_mount
 
-    #login_page controls(view)
-    view.controls=[(
-        ft.Row(
+    def did_mount(self):
+        self.username.current.value = 'klintjosh'
+        self.password.current.value = '1234567890'
+
+    def get_page(self,) -> ft.View:
+        self.page.controls = [
+            ft.Row(
             controls=[
                 ft.Container(
                     #container settings
@@ -34,7 +39,7 @@ def login_page(page: ft.Page, view: ft.View) -> ft.View:
                                     ft.Column(
                                         [
                                             ft.TextField(
-                                                ref=username,
+                                                ref=self.username,
                                                 label="Username",
                                                 width=470,
                                                 prefix_icon=ft.icons.PERSON,
@@ -42,7 +47,7 @@ def login_page(page: ft.Page, view: ft.View) -> ft.View:
                                                 bgcolor="#EBEAF1",
                                             ),
                                             ft.TextField(
-                                                ref=password,
+                                                ref=self.password,
                                                 password=True,
                                                 can_reveal_password=True,
                                                 label="Password",
@@ -84,7 +89,7 @@ def login_page(page: ft.Page, view: ft.View) -> ft.View:
                                             bgcolor="#62CECA",
                                             width=200,
                                             height=55,
-                                            on_click=printt
+                                            on_click=self.on_login
                                         ),
                                 width=556,
                                 height=100,
@@ -99,7 +104,29 @@ def login_page(page: ft.Page, view: ft.View) -> ft.View:
             ],
             alignment=ft.MainAxisAlignment.END,
         )
-    )]
+        ]
 
-    #we then return this view
-    return view 
+        return self.page
+
+    def on_login(self, _):
+        try:
+            login(username=self.username.current.value,
+                  password=self.password.current.value)
+            print("hi user")
+        except ClientResponseError:
+            ok = ft.Ref[ft.TextButton]()
+            dialog = ft.AlertDialog(
+                modal=True, content=ft.Text('Username or password not found'),
+                actions=[
+                    ft.TextButton('OK', ref=ok)
+                ]
+            )
+
+            def on_close(_):
+                dialog.open = False
+                self.root.update()
+            ok.current.on_click = on_close
+
+            self.root.dialog = dialog
+            dialog.open = True
+            self.root.update()

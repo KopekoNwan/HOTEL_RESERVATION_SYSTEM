@@ -1,0 +1,35 @@
+[33mcommit c8ce6252fefd82b7c730c5e334e2dbee2ce065d1[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Klint Josh <klintjoshgasper4work@gmail.com>
+Date:   Fri May 26 13:55:34 2023 +0800
+
+    finish login_page design
+
+[33mcommit f2040aa49f91d1dbd19236f860d0e4bf9074c739[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Klint Josh <klintjoshgasper4work@gmail.com>
+Date:   Fri May 26 09:39:35 2023 +0800
+
+    successfully route login_page from root
+
+[33mcommit f38b37b54ca8161c83b468bf4cf1931bf05a9677[m
+Author: Klint Josh <klintjoshgasper4work@gmail.com>
+Date:   Thu May 25 07:50:59 2023 +0800
+
+    REMOVE sample file
+
+[33mcommit 34650b044dd0448e80bd2c80240162d56d69ef20[m
+Author: Klint Josh <klintjoshgasper4work@gmail.com>
+Date:   Thu May 25 07:46:55 2023 +0800
+
+    sample file
+
+[33mcommit 4fc848058cc8893b135ff7593f6ccfdcbb145d41[m
+Author: Klint Josh <klintjoshgasper4work@gmail.com>
+Date:   Thu May 25 07:40:45 2023 +0800
+
+    Add database file
+
+[33mcommit 9d286980e2325ad51a73d7f29700d658e8b60855[m
+Author: KopekoNwan <130295181+KopekoNwan@users.noreply.github.com>
+Date:   Mon May 15 08:59:49 2023 +0800
+
+    Initial commit
