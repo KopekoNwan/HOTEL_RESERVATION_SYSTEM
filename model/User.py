@@ -1,5 +1,6 @@
 from pocketbase.client import Record
 
+
 class User(Record):
 
     username: str

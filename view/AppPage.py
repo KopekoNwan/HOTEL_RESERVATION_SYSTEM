@@ -1,6 +1,4 @@
-# Do not modify this file.
 import flet as ft
-
 
 class AppPage():
     def __init__(self,

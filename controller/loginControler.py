@@ -1,7 +1,6 @@
 from model.Host import pb
 from model.User import User
 
-
 def login(username, password):
     results = pb.collection('users').auth_with_password(username, password)
     user_dict = results.record.__dict__['collection_id']
@@ -11,7 +10,6 @@ def login(username, password):
     ).load(data=user_dict)
     pb.auth_store.save(token=results.token, model=user)
     token = "" if pb.auth_store.token is None else pb.auth_store.token
-
     return token is not None
 
 
